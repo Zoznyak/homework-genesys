@@ -37,8 +37,9 @@ public class GetContactsStep extends AbstractApiSteps<Object, List<Contact>> {
     }
 
     public void logContacts() {
-        // TODO logger
-        context.getContactList().forEach(contact -> System.out.println(contact.getName() + " | " + contact.getEmail()));
+        context.getContactList().forEach(contact ->
+                logger.info("{} | {}", contact.getName(), contact.getEmail())
+        );
     }
 
     public void assertNthContactContains(int n, String string) {
