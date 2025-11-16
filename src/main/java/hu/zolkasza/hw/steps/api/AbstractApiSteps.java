@@ -99,6 +99,7 @@ public abstract class AbstractApiSteps<INPUT, OUTPUT> {
     }
 
     private String getBaseUrl() {
+        // TODO load it from config
         return "https://jsonplaceholder.typicode.com";
     }
 
