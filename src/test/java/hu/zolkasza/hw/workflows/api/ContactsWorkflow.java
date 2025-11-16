@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ContactsWorkflow {
 
-    private GetContactsStep getContactsStep;
+    private final GetContactsStep getContactsStep;
 
     public ContactsWorkflow(GetContactsStep getContactsStep) {
         this.getContactsStep = getContactsStep;
