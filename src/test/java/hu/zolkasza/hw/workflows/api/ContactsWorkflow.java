@@ -19,11 +19,13 @@ public class ContactsWorkflow {
     public void there_are_contacts_in_the_system() {
         // We assume there are contacts. Conditional contact creation could happen here.
     }
+
     @When("I collect all contacts")
     public void i_collect_all_contacts() throws IOException {
         getContactsStep.getAllContacts();
         getContactsStep.logContacts();
     }
+
     @Then("The first email address contains {string}")
     public void the_first_email_address_contains(String str) {
         getContactsStep.assertNthContactContains(0, str);

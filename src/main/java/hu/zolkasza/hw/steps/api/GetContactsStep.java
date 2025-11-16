@@ -1,40 +1,39 @@
 package hu.zolkasza.hw.steps.api;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import hu.zolkasza.hw.contexts.api.ContactsContext;
 import hu.zolkasza.hw.model.api.Contact;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import hu.zolkasza.hw.model.api.HttpMethod;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.List;
 
-public class GetContactsStep {
+public class GetContactsStep extends AbstractApiSteps<Object, List<Contact>> {
 
-    private final Gson gson = new Gson();
-    private OkHttpClient client = new OkHttpClient();
-    private ContactsContext context;
+    private final ContactsContext context;
 
     public GetContactsStep(ContactsContext context) {
         this.context = context;
     }
 
+    @Override
+    protected String getUrlSuffix(Object s) {
+        return "users";
+    }
+
+    @Override
+    protected HttpMethod getMethod() {
+        return HttpMethod.GET;
+    }
+
+    @Override
+    protected Object getRequestBody(Object o) {
+        return null;
+    }
+
     public void getAllContacts() throws IOException {
-        Request request = new Request.Builder()
-                .url("https://jsonplaceholder.typicode.com/users")
-                .get()
-                .build();
-        try (Response response = client.newCall(request).execute()) {
-            context.setLastResponse(response);
-            if (response.isSuccessful()) {
-                Type listType = new TypeToken<List<Contact>>(){}.getType();
-                List<Contact> contacts = gson.fromJson(response.body().charStream(), listType);
-                context.setContactList(contacts);
-            }
-        }
+        callingEndpointWithoutInput();
+        assertThatResponseIsSuccessful();
+        context.setContactList(getOutput());
     }
 
     public void logContacts() {
@@ -48,4 +47,5 @@ public class GetContactsStep {
             throw new AssertionError("The " + n + "th contact does not contain " + string);
         }
     }
+
 }
