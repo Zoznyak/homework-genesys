@@ -16,12 +16,27 @@ public class LoginSteps {
         this.mainPage = mainPage;
     }
 
-    public void loginWithValidUser(SauceLabUser user) throws IOException {
+    public void openApplication() {
         loginPage.loadPage();
+        loginPage.pageIsLoaded();
+    }
+
+    public void loginWithValidUser(SauceLabUser user) throws IOException {
         loginPage.pageIsLoaded();
         loginPage.setUsernameField(user.getUsername());
         loginPage.setPasswordField(user.getPassword());
         loginPage.clickLoginButton();
         mainPage.pageIsLoaded();
+    }
+
+    public void loginWithoutCredentials() {
+        loginPage.pageIsLoaded();
+        loginPage.setUsernameField("");
+        loginPage.setPasswordField("");
+        loginPage.clickLoginButton();
+    }
+
+    public void assertLoginError() {
+        loginPage.assertLoginError();
     }
 }

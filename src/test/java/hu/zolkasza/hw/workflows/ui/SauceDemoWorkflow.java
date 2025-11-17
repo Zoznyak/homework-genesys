@@ -24,8 +24,9 @@ public class SauceDemoWorkflow {
         this.purchaseSteps = purchaseSteps;
     }
 
-    @Given("The application is opened")
-    public void the_application_is_opened() throws IOException {
+    @Given("The main page is opened")
+    public void the_main_page_is_opened() throws IOException {
+        loginSteps.openApplication();
         SauceLabUser user = testDataLoader.loadSauceLabUser("valid-user.json");
         loginSteps.loginWithValidUser(user);
     }
@@ -58,6 +59,19 @@ public class SauceDemoWorkflow {
     @Then("A message about the successful purchase appears")
     public void a_message_about_the_successful_purchase_appears() {
         purchaseSteps.assertCheckoutIsComplete();
+    }
+
+    @Given("The login page is opened")
+    public void the_login_page_is_opened() {
+        loginSteps.openApplication();
+    }
+    @When("I click the login button")
+    public void i_click_the_login_button() {
+        loginSteps.loginWithoutCredentials();
+    }
+    @Then("A message about missing credentials appears")
+    public void a_message_about_missing_credentials_appears() {
+        loginSteps.assertLoginError();
     }
 
 }
