@@ -4,6 +4,7 @@ import hu.zolkasza.hw.contexts.ui.SauceContext;
 import hu.zolkasza.hw.tools.Configuration;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -27,17 +28,16 @@ public class WebDriverHooks {
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
         prefs.put("profile.password_manager_leak_detection_enabled", false);
-//        prefs.put("safebrowsing.enabled", true);
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefs);
         options.addArguments("--guest");
-//        options.addArguments("--password-store=basic");
         options.addArguments("--disable-notifications");
         if (config.isHeadless()) {
             options.addArguments("--headless=new");
         } else {
             options.addArguments("--start-maximized");
         }
+        options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         sauceContext.setDriver(new ChromeDriver(options));
     }
 

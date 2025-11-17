@@ -1,4 +1,4 @@
-package hu.zolkasza.hw.model.ui;
+package hu.zolkasza.hw.model.ui.sauce;
 
 import hu.zolkasza.hw.model.AbstractModel;
 

@@ -1,10 +1,10 @@
 package hu.zolkasza.hw.workflows.ui;
 
-import hu.zolkasza.hw.model.ui.SauceLabCustomer;
-import hu.zolkasza.hw.model.ui.SauceLabItem;
-import hu.zolkasza.hw.model.ui.SauceLabUser;
-import hu.zolkasza.hw.steps.ui.LoginSteps;
-import hu.zolkasza.hw.steps.ui.PurchaseSteps;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabCustomer;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabItem;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabUser;
+import hu.zolkasza.hw.steps.ui.sauce.LoginSteps;
+import hu.zolkasza.hw.steps.ui.sauce.PurchaseSteps;
 import hu.zolkasza.hw.tools.TestDataLoader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

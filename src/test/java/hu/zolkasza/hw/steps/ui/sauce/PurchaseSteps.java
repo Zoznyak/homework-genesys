@@ -1,8 +1,8 @@
-package hu.zolkasza.hw.steps.ui;
+package hu.zolkasza.hw.steps.ui.sauce;
 
-import hu.zolkasza.hw.model.ui.SauceLabCustomer;
-import hu.zolkasza.hw.model.ui.SauceLabItem;
-import hu.zolkasza.hw.pages.*;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabCustomer;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabItem;
+import hu.zolkasza.hw.pages.sauce.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

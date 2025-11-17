@@ -1,11 +1,12 @@
-package hu.zolkasza.hw.pages;
+package hu.zolkasza.hw.pages.sauce;
 
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.pages.PageObject;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
 
-public class LoginPage extends PageObject{
+public class LoginPage extends PageObject {
 
     private final By usernameField = By.cssSelector("[data-test='username']");
     private final By passwordField = By.cssSelector("[data-test='password']");

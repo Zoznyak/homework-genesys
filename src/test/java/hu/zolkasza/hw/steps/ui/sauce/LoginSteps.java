@@ -1,8 +1,8 @@
-package hu.zolkasza.hw.steps.ui;
+package hu.zolkasza.hw.steps.ui.sauce;
 
-import hu.zolkasza.hw.model.ui.SauceLabUser;
-import hu.zolkasza.hw.pages.LoginPage;
-import hu.zolkasza.hw.pages.MainPage;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabUser;
+import hu.zolkasza.hw.pages.sauce.LoginPage;
+import hu.zolkasza.hw.pages.sauce.MainPage;
 
 public class LoginSteps {
 

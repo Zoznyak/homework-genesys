@@ -46,6 +46,10 @@ public class Configuration {
         return getProperty("sauce.ui.url");
     }
 
+    public String getGuruUiUrl() {
+        return getProperty("guru.ui.url");
+    }
+
     public String getApiUrl() {
         return getProperty("jsonplaceholder.api.url");
     }
@@ -57,12 +61,8 @@ public class Configuration {
         return isHeadless;
     }
 
-    public int getShortTimeoutSeconds() {
-        return Integer.parseInt(getProperty("browser.timeout.short.seconds"));
-    }
-
-    public int getLongTimeoutSeconds() {
-        return Integer.parseInt(getProperty("browser.timeout.long.seconds"));
+    public int getTimeoutSeconds() {
+        return Integer.parseInt(getProperty("browser.timeout.seconds"));
     }
 
 }

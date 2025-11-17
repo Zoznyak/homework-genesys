@@ -1,7 +1,8 @@
-package hu.zolkasza.hw.pages;
+package hu.zolkasza.hw.pages.sauce;
 
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.pages.PageObject;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
 

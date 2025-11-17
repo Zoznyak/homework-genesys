@@ -1,4 +1,4 @@
-package hu.zolkasza.hw.model.ui;
+package hu.zolkasza.hw.model.ui.sauce;
 
 public enum SauceLabItem {
 

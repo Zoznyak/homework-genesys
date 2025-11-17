@@ -1,8 +1,8 @@
 package hu.zolkasza.hw.tools;
 
 import hu.zolkasza.hw.model.AbstractModel;
-import hu.zolkasza.hw.model.ui.SauceLabCustomer;
-import hu.zolkasza.hw.model.ui.SauceLabUser;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabCustomer;
+import hu.zolkasza.hw.model.ui.sauce.SauceLabUser;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
