@@ -4,8 +4,6 @@ import hu.zolkasza.hw.model.ui.SauceLabUser;
 import hu.zolkasza.hw.pages.LoginPage;
 import hu.zolkasza.hw.pages.MainPage;
 
-import java.io.IOException;
-
 public class LoginSteps {
 
     private final LoginPage loginPage;
@@ -21,7 +19,7 @@ public class LoginSteps {
         loginPage.pageIsLoaded();
     }
 
-    public void loginWithValidUser(SauceLabUser user) throws IOException {
+    public void loginWithUser(SauceLabUser user) {
         loginPage.pageIsLoaded();
         loginPage.setUsernameField(user.getUsername());
         loginPage.setPasswordField(user.getPassword());
@@ -39,4 +37,9 @@ public class LoginSteps {
     public void assertLoginError() {
         loginPage.assertLoginError();
     }
+
+    public void assertFooterContains(String text) {
+        mainPage.assertFooterTextContains(text);
+    }
+
 }

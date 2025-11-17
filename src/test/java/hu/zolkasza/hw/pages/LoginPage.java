@@ -1,5 +1,6 @@
 package hu.zolkasza.hw.pages;
 
+import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.SauceContext;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
@@ -13,8 +14,8 @@ public class LoginPage extends PageObject{
 
     private final Configuration config;
 
-    public LoginPage(SauceContext context, Configuration config) {
-        super(context, config);
+    public LoginPage(SauceContext context, Configuration config, AssertionContext assertionContext) {
+        super(context, config, assertionContext);
         this.config = config;
     }
 

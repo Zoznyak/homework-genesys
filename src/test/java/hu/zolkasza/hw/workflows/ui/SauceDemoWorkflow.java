@@ -24,11 +24,11 @@ public class SauceDemoWorkflow {
         this.purchaseSteps = purchaseSteps;
     }
 
-    @Given("The main page is opened")
-    public void the_main_page_is_opened() throws IOException {
+    @Given("{string} user is logged in")
+    public void user_is_logged_in(String str) throws IOException {
         loginSteps.openApplication();
-        SauceLabUser user = testDataLoader.loadSauceLabUser("valid-user.json");
-        loginSteps.loginWithValidUser(user);
+        SauceLabUser user = testDataLoader.loadSauceLabUser(str.toLowerCase() + "-user.json");
+        loginSteps.loginWithUser(user);
     }
 
     @When("I add items to the cart")
@@ -37,7 +37,7 @@ public class SauceDemoWorkflow {
         purchaseSteps.addItemToCart(SauceLabItem.JACKET);
     }
 
-    @Then("The cart shows the number of items placed in it")
+    @Then("the cart shows the number of items placed in it")
     public void the_cart_shows_the_number_of_items_placed_in_it() {
         purchaseSteps.assertItemNumbers(2);
     }
@@ -56,22 +56,37 @@ public class SauceDemoWorkflow {
         purchaseSteps.finishCheckout();
     }
 
-    @Then("A message about the successful purchase appears")
+    @Then("a message about the successful purchase appears")
     public void a_message_about_the_successful_purchase_appears() {
         purchaseSteps.assertCheckoutIsComplete();
     }
 
-    @Given("The login page is opened")
+    @Given("the login page is opened")
     public void the_login_page_is_opened() {
         loginSteps.openApplication();
     }
+
     @When("I click the login button")
     public void i_click_the_login_button() {
         loginSteps.loginWithoutCredentials();
     }
-    @Then("A message about missing credentials appears")
+
+    @Then("a message about missing credentials appears")
     public void a_message_about_missing_credentials_appears() {
         loginSteps.assertLoginError();
+    }
+
+    @When("I log in as a {string} user")
+    public void i_log_in_as_a_user(String str) throws IOException {
+        loginSteps.openApplication();
+        SauceLabUser user = testDataLoader.loadSauceLabUser(str.toLowerCase() + "-user.json");
+        loginSteps.loginWithUser(user);
+    }
+
+    @Then("products page is opened")
+    public void products_page_is_opened() {
+        loginSteps.assertFooterContains("2024");
+        loginSteps.assertFooterContains("Terms of Service");
     }
 
 }

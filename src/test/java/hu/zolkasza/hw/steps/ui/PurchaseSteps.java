@@ -55,4 +55,5 @@ public class PurchaseSteps {
         checkoutCompletePage.pageIsLoaded();
         checkoutCompletePage.assertCompleteText();
     }
+
 }

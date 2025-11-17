@@ -1,5 +1,6 @@
 package hu.zolkasza.hw.pages;
 
+import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.tools.Configuration;
 import org.apache.logging.log4j.LogManager;
@@ -19,13 +20,15 @@ public class PageObject {
 
     private final UiContext context;
     private final Configuration config;
+    protected final AssertionContext assertionContext;
     private WebDriver driver;
     private WebDriverWait wait;
 
 
-    public PageObject(UiContext context, Configuration config) {
+    public PageObject(UiContext context, Configuration config, AssertionContext assertionContext) {
         this.context = context;
         this.config = config;
+        this.assertionContext = assertionContext;
     }
 
     protected void waitForElementPresence(By locator) {
@@ -70,7 +73,19 @@ public class PageObject {
     protected void verifyElementText(By locator, String expectedText) {
         logger.debug("Verifying text for element: {}. Expected: '{}'", locator, expectedText);
         String actualText = getElementText(locator);
-        Assertions.assertEquals(expectedText, actualText, "The element's text does not match the expected value!");
+        assertionContext.get().assertThat(actualText)
+                .withFailMessage("Element text mismatch for locator '%s'. Expected: '%s', but was: '%s'",
+                        locator, expectedText, actualText)
+                .isEqualTo(expectedText);
+    }
+
+    protected void verifyElementTextContains(By locator, String expectedText) {
+        logger.debug("Verifying text for element: {}. Contains: '{}'", locator, expectedText);
+        String actualText = getElementText(locator);
+        assertionContext.get().assertThat(actualText)
+                .withFailMessage("Element text mismatch for locator '%s'. Expected: '%s', but was: '%s'",
+                        locator, expectedText, actualText)
+                .contains(expectedText);
     }
 
     protected void click(By locator) {

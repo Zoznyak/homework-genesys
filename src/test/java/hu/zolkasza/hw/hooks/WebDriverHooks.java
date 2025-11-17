@@ -41,7 +41,7 @@ public class WebDriverHooks {
         sauceContext.setDriver(new ChromeDriver(options));
     }
 
-    @After("@ui")
+    @After(value = "@ui", order = 2)
     public void tearDown() {
         if (sauceContext.getDriver() != null) {
             sauceContext.getDriver().quit();
