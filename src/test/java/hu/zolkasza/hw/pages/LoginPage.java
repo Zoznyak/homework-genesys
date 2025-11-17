@@ -1,6 +1,7 @@
 package hu.zolkasza.hw.pages;
 
 import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
 
 public class LoginPage extends PageObject{
@@ -9,12 +10,15 @@ public class LoginPage extends PageObject{
     private final By passwordField = By.cssSelector("[data-test='password']");
     private final By loginButton = By.cssSelector("[data-test='login-button']");
 
-    public LoginPage(SauceContext context) {
-        super(context);
+    private final Configuration config;
+
+    public LoginPage(SauceContext context, Configuration config) {
+        super(context, config);
+        this.config = config;
     }
 
     public void loadPage() {
-        navigateTo("https://www.saucedemo.com/inventory.html");
+        navigateTo(config.getSauceUiUrl());
     }
 
     public void pageIsLoaded() {

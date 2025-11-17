@@ -5,20 +5,18 @@ import hu.zolkasza.hw.model.ui.SauceLabItem;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
 
-public class MainPage extends PageObject {
+public class HeaderPanel extends PageObject {
 
-    private final By inventoryContainer = By.cssSelector("[data-test='inventory-container']");
-    private final By title = By.cssSelector("[data-test='title']");
+    private final By headerContainer = By.cssSelector("[data-test='header-container']");
     private final By cartBadgeText = By.cssSelector("[data-test='shopping-cart-badge']");
     private final By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
 
-    public MainPage(SauceContext context, Configuration config) {
+    public HeaderPanel(SauceContext context, Configuration config) {
         super(context, config);
     }
 
     public void pageIsLoaded() {
-        waitForElementPresence(inventoryContainer);
-        waitForElementVisibility(title);
+        waitForElementPresence(headerContainer);
     }
 
     public void clickAddCartButton(SauceLabItem item) {

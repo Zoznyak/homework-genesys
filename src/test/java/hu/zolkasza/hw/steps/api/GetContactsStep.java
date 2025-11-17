@@ -3,6 +3,7 @@ package hu.zolkasza.hw.steps.api;
 import hu.zolkasza.hw.contexts.api.ContactsContext;
 import hu.zolkasza.hw.model.api.Contact;
 import hu.zolkasza.hw.model.api.HttpMethod;
+import hu.zolkasza.hw.tools.Configuration;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +12,8 @@ public class GetContactsStep extends AbstractApiSteps<Object, List<Contact>> {
 
     private final ContactsContext context;
 
-    public GetContactsStep(ContactsContext context) {
+    public GetContactsStep(ContactsContext context, Configuration config) {
+        super(config);
         this.context = context;
     }
 

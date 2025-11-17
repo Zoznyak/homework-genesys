@@ -1,6 +1,7 @@
 package hu.zolkasza.hw.hooks;
 
 import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.tools.Configuration;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,10 +12,12 @@ import java.util.Map;
 
 public class WebDriverHooks {
 
-    private SauceContext sauceContext;
+    private final SauceContext sauceContext;
+    private final Configuration config;
 
-    public WebDriverHooks(SauceContext context) {
+    public WebDriverHooks(SauceContext context, Configuration config) {
         this.sauceContext = context;
+        this.config = config;
     }
 
     @Before("@ui")
@@ -30,7 +33,11 @@ public class WebDriverHooks {
         options.addArguments("--guest");
 //        options.addArguments("--password-store=basic");
         options.addArguments("--disable-notifications");
-        options.addArguments("--start-maximized");
+        if (config.isHeadless()) {
+            options.addArguments("--headless=new");
+        } else {
+            options.addArguments("--start-maximized");
+        }
         sauceContext.setDriver(new ChromeDriver(options));
     }
 

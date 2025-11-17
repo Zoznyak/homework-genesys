@@ -1,7 +1,10 @@
 package hu.zolkasza.hw.steps.ui;
 
+import hu.zolkasza.hw.model.ui.SauceLabUser;
 import hu.zolkasza.hw.pages.LoginPage;
 import hu.zolkasza.hw.pages.MainPage;
+
+import java.io.IOException;
 
 public class LoginSteps {
 
@@ -13,11 +16,11 @@ public class LoginSteps {
         this.mainPage = mainPage;
     }
 
-    public void loginWithValidUser() {
+    public void loginWithValidUser(SauceLabUser user) throws IOException {
         loginPage.loadPage();
         loginPage.pageIsLoaded();
-        loginPage.setUsernameField("performance_glitch_user");
-        loginPage.setPasswordField("secret_sauce");
+        loginPage.setUsernameField(user.getUsername());
+        loginPage.setPasswordField(user.getPassword());
         loginPage.clickLoginButton();
         mainPage.pageIsLoaded();
     }

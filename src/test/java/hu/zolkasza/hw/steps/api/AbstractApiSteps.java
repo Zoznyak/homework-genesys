@@ -2,6 +2,7 @@ package hu.zolkasza.hw.steps.api;
 
 import com.google.gson.Gson;
 import hu.zolkasza.hw.model.api.HttpMethod;
+import hu.zolkasza.hw.tools.Configuration;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -17,10 +18,15 @@ public abstract class AbstractApiSteps<INPUT, OUTPUT> {
 
     protected static final Logger logger = LogManager.getLogger(AbstractApiSteps.class);
 
+    private final Configuration config;
     private final Gson gson = new Gson();
     private final OkHttpClient client = new OkHttpClient();
     private Response response;
     private OUTPUT output;
+
+    public AbstractApiSteps(Configuration config) {
+        this.config = config;
+    }
 
     public void callingEndpointWithoutInput() throws IOException {
         sendAndRecieve(null);
@@ -99,8 +105,7 @@ public abstract class AbstractApiSteps<INPUT, OUTPUT> {
     }
 
     private String getBaseUrl() {
-        // TODO load it from config
-        return "https://jsonplaceholder.typicode.com";
+        return config.getApiUrl();
     }
 
 }

@@ -1,6 +1,7 @@
 package hu.zolkasza.hw.pages;
 
 import hu.zolkasza.hw.contexts.ui.UiContext;
+import hu.zolkasza.hw.tools.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
@@ -15,15 +16,16 @@ import java.time.Duration;
 public class PageObject {
 
     private static final Logger logger = LogManager.getLogger(PageObject.class);
-    // TODO make configurable
-    private static final Duration GLOBAL_TIMEOUT = Duration.ofSeconds(10);
 
     private final UiContext context;
+    private final Configuration config;
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public PageObject(UiContext context) {
+
+    public PageObject(UiContext context, Configuration config) {
         this.context = context;
+        this.config = config;
     }
 
     protected void waitForElementPresence(By locator) {
@@ -32,7 +34,7 @@ public class PageObject {
             getWait().until(ExpectedConditions.presenceOfElementLocated(locator));
         } catch (Exception ex) {
             logger.error("Error while waiting for element presence: {}", locator, ex);
-            Assertions.fail("Element did not appear in the DOM within " + GLOBAL_TIMEOUT.getSeconds() + "s: " + locator);
+            Assertions.fail("Element did not appear in the DOM within " + config.getLongTimeoutSeconds() + "s: " + locator);
         }
     }
 
@@ -42,7 +44,7 @@ public class PageObject {
             getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (Exception ex) {
             logger.error("Error while waiting for element visibility: {}", locator, ex);
-            Assertions.fail("Element did not become visible within " + GLOBAL_TIMEOUT.getSeconds() + "s: " + locator);
+            Assertions.fail("Element did not become visible within " + config.getLongTimeoutSeconds() + "s: " + locator);
         }
     }
 
@@ -52,7 +54,7 @@ public class PageObject {
             getWait().until(ExpectedConditions.elementToBeClickable(locator));
         } catch (Exception ex) {
             logger.error("Error while waiting for element to be clickable: {}", locator, ex);
-            Assertions.fail("Element did not become clickable within " + GLOBAL_TIMEOUT.getSeconds() + "s: " + locator);
+            Assertions.fail("Element did not become clickable within " + config.getLongTimeoutSeconds() + "s: " + locator);
         }
     }
 
@@ -101,7 +103,7 @@ public class PageObject {
 
     private WebDriverWait getWait() {
         if (this.wait == null) {
-            this.wait = new WebDriverWait(getDriver(), GLOBAL_TIMEOUT);
+            this.wait = new WebDriverWait(getDriver(), Duration.ofSeconds(config.getLongTimeoutSeconds()));
         }
         return this.wait;
     }
