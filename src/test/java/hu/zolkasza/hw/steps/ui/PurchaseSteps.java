@@ -24,6 +24,7 @@ public class PurchaseSteps {
     }
 
     public void addItemToCart(SauceLabItem item) {
+        headerPanel.panelIsLoaded();
         headerPanel.clickAddCartButton(item);
     }
 

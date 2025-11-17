@@ -15,7 +15,7 @@ public class HeaderPanel extends PageObject {
         super(context, config);
     }
 
-    public void pageIsLoaded() {
+    public void panelIsLoaded() {
         waitForElementPresence(headerContainer);
     }
 
