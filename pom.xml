@@ -15,7 +15,7 @@
         <junit.version>5.10.3</junit.version>
         <webdrivermanager.version>5.9.1</webdrivermanager.version>
         <maven.surefire.version>3.3.0</maven.surefire.version>
-        <cucumber.tags>@ui and @guru</cucumber.tags>
+        <cucumber.tags>@ui</cucumber.tags>
     </properties>
     <dependencies>
         <dependency>
@@ -133,7 +133,6 @@
                                 <param>**/*.json</param>
                             </jsonFiles>
                             <checkBuildResult>false</checkBuildResult>
-<!--                            <skip>false</skip>-->
                         </configuration>
                     </execution>
                 </executions>
