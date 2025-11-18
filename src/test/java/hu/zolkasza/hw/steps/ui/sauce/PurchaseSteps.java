@@ -24,21 +24,25 @@ public class PurchaseSteps {
     }
 
     public void addItemToCart(SauceLabItem item) {
+        logger.info("Adding item to cart: {}", item);
         headerPanel.panelIsLoaded();
         headerPanel.clickAddCartButton(item);
     }
 
     public void assertItemNumbers(int expectedNumberOfItems) {
+        logger.info("Asserting item numbers: {}", expectedNumberOfItems);
         headerPanel.assertCartBadgeText(expectedNumberOfItems);
     }
 
     public void checkoutItems() {
+        logger.info("Checkout items");
         headerPanel.clickCartButton();
         checkoutPage.pageIsLoaded();
         checkoutPage.clickCheckoutButton();
     }
 
     public void fillCustomerData(SauceLabCustomer customer) {
+        logger.info("Filling customer data: {}", customer);
         checkoutInfoPage.pageIsLoaded();
         checkoutInfoPage.setFirstNameField(customer.getFirstName());
         checkoutInfoPage.setLastNameField(customer.getLastName());
@@ -46,12 +50,14 @@ public class PurchaseSteps {
     }
 
     public void finishCheckout() {
+        logger.info("Finishing checkout");
         checkoutInfoPage.clickContinueButton();
         checkoutSummaryPage.pageIsLoaded();
         checkoutSummaryPage.clickFinishButton();
     }
 
     public void assertCheckoutIsComplete() {
+        logger.info("Asserting checkout is complete");
         checkoutCompletePage.pageIsLoaded();
         checkoutCompletePage.assertCompleteText();
     }

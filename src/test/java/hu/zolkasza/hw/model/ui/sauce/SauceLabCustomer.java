@@ -31,4 +31,13 @@ public class SauceLabCustomer extends AbstractModel {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
+    @Override
+    public String toString() {
+        return "SauceLabCustomer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }

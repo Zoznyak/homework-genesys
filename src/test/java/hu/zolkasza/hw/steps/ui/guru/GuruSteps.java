@@ -23,31 +23,37 @@ public class GuruSteps {
     }
 
     public void openApplication() {
+        logger.info("Opening Guru application");
         guruMainPage.loadPage();
         guruMainPage.pageIsLoaded();
     }
 
     public void openSeleniumPractice() {
+        logger.info("Opening Selenium practice page");
         guruMainPage.clickIframe();
         seleniumPracticePage.pageIsLoaded();
     }
 
     public void verifyTitle() {
+        logger.info("Verifying title");
         seleniumPracticePage.assertTitle(TITLE);
     }
 
     public void closeSeleniumPractice() {
+        logger.info("Closing Selenium practice page");
         seleniumPracticePage.closePage();
         guruMainPage.pageIsLoaded();
     }
 
     public void navigateToSeleniumMenu() {
+        logger.info("Navigating to Selenium menu");
         guruMainPage.hooverOverTestingMenu();
         guruMainPage.clickSeleniumLink();
         seleniumTutorialPage.pageIsLoaded();
     }
 
     public void verifyButton() {
+        logger.info("Verifying button text");
         seleniumTutorialPage.verifyButton(BUTTON_TEXT);
     }
 }
