@@ -1,4 +1,4 @@
-@ui @saucedemo
+@ui @sauce
 Feature: Sauce demo tests
 
   Scenario: Cart count updates after adding items
