@@ -1,7 +1,7 @@
 package hu.zolkasza.hw.pages.sauce;
 
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
-import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.pages.PageObject;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ public class CheckoutInfoPage extends PageObject {
     private final By zipCodeField = By.cssSelector("[data-test='postalCode']");
     private final By continueButton = By.cssSelector("[data-test='continue']");
 
-    public CheckoutInfoPage(SauceContext context, Configuration config, AssertionContext assertionContext) {
+    public CheckoutInfoPage(UiContext context, Configuration config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
     }
 

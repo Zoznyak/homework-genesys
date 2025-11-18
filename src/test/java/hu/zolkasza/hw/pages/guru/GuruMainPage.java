@@ -1,7 +1,7 @@
 package hu.zolkasza.hw.pages.guru;
 
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
-import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.pages.PageObject;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
@@ -16,7 +16,7 @@ public class GuruMainPage extends PageObject {
 
     private final Configuration config;
 
-    public GuruMainPage(SauceContext context, Configuration config, AssertionContext assertionContext) {
+    public GuruMainPage(UiContext context, Configuration config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
         this.config = config;
     }

@@ -1,7 +1,7 @@
 package hu.zolkasza.hw.pages.sauce;
 
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
-import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.pages.PageObject;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
@@ -12,7 +12,7 @@ public class MainPage extends PageObject {
     private final By title = By.cssSelector("[data-test='title']");
     private final By footerText = By.cssSelector("[data-test='footer-copy']");
 
-    public MainPage(SauceContext context, Configuration config, AssertionContext assertionContext) {
+    public MainPage(UiContext context, Configuration config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
     }
 

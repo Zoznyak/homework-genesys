@@ -1,6 +1,6 @@
 package hu.zolkasza.hw.hooks;
 
-import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.tools.Configuration;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -13,11 +13,11 @@ import java.util.Map;
 
 public class WebDriverHooks {
 
-    private final SauceContext sauceContext;
+    private final UiContext context;
     private final Configuration config;
 
-    public WebDriverHooks(SauceContext context, Configuration config) {
-        this.sauceContext = context;
+    public WebDriverHooks(UiContext context, Configuration config) {
+        this.context = context;
         this.config = config;
     }
 
@@ -38,13 +38,13 @@ public class WebDriverHooks {
             options.addArguments("--start-maximized");
         }
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
-        sauceContext.setDriver(new ChromeDriver(options));
+        context.setDriver(new ChromeDriver(options));
     }
 
     @After(value = "@ui", order = 2)
     public void tearDown() {
-        if (sauceContext.getDriver() != null) {
-            sauceContext.getDriver().quit();
+        if (context.getDriver() != null) {
+            context.getDriver().quit();
         }
     }
 

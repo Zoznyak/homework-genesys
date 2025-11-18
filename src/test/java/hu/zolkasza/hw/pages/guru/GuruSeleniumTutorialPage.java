@@ -1,7 +1,7 @@
 package hu.zolkasza.hw.pages.guru;
 
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
-import hu.zolkasza.hw.contexts.ui.SauceContext;
+import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.pages.PageObject;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ public class GuruSeleniumTutorialPage extends PageObject {
     private final By image = By.cssSelector("img[alt='Testiny']");
     private final By submitButton = By.cssSelector("div[id*='cbox'] button[type='submit']");
 
-    public GuruSeleniumTutorialPage(SauceContext context, Configuration config, AssertionContext assertionContext) {
+    public GuruSeleniumTutorialPage(UiContext context, Configuration config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
     }
 
