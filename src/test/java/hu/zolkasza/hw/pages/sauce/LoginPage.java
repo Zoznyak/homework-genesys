@@ -3,7 +3,7 @@ package hu.zolkasza.hw.pages.sauce;
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.pages.PageObject;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import org.openqa.selenium.By;
 
 public class LoginPage extends PageObject {
@@ -13,9 +13,9 @@ public class LoginPage extends PageObject {
     private final By loginButton = By.cssSelector("[data-test='login-button']");
     private final By error = By.cssSelector("[data-test='error']");
 
-    private final Configuration config;
+    private final ConfigurationLoader config;
 
-    public LoginPage(UiContext context, Configuration config, AssertionContext assertionContext) {
+    public LoginPage(UiContext context, ConfigurationLoader config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
         this.config = config;
     }

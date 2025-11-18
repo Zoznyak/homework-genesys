@@ -3,7 +3,7 @@ package hu.zolkasza.hw.pages.guru;
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.pages.PageObject;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import org.openqa.selenium.By;
 
 public class GuruMainPage extends PageObject {
@@ -14,9 +14,9 @@ public class GuruMainPage extends PageObject {
     private final By testingMenu = By.cssSelector("a[href='https://www.guru99.com/software-testing.html']");
     private final By seleniumLink = By.cssSelector("a[href='https://www.guru99.com/selenium-tutorial.html']");
 
-    private final Configuration config;
+    private final ConfigurationLoader config;
 
-    public GuruMainPage(UiContext context, Configuration config, AssertionContext assertionContext) {
+    public GuruMainPage(UiContext context, ConfigurationLoader config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
         this.config = config;
     }

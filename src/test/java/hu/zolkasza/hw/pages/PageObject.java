@@ -2,7 +2,7 @@ package hu.zolkasza.hw.pages;
 
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.UiContext;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
@@ -22,12 +22,12 @@ public class PageObject {
     private static final Logger logger = LogManager.getLogger(PageObject.class);
 
     private final UiContext context;
-    private final Configuration config;
+    private final ConfigurationLoader config;
     protected final AssertionContext assertionContext;
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public PageObject(UiContext context, Configuration config, AssertionContext assertionContext) {
+    public PageObject(UiContext context, ConfigurationLoader config, AssertionContext assertionContext) {
         this.context = context;
         this.config = config;
         this.assertionContext = assertionContext;

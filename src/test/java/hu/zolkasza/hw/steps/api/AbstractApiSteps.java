@@ -2,7 +2,7 @@ package hu.zolkasza.hw.steps.api;
 
 import com.google.gson.Gson;
 import hu.zolkasza.hw.model.api.HttpMethod;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -18,13 +18,13 @@ public abstract class AbstractApiSteps<INPUT, OUTPUT> {
 
     protected static final Logger logger = LogManager.getLogger(AbstractApiSteps.class);
 
-    private final Configuration config;
+    private final ConfigurationLoader config;
     private final Gson gson = new Gson();
     private final OkHttpClient client = new OkHttpClient();
     private Response response;
     private OUTPUT output;
 
-    public AbstractApiSteps(Configuration config) {
+    public AbstractApiSteps(ConfigurationLoader config) {
         this.config = config;
     }
 

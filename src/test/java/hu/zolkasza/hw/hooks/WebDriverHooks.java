@@ -1,7 +1,7 @@
 package hu.zolkasza.hw.hooks;
 
 import hu.zolkasza.hw.contexts.ui.UiContext;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.PageLoadStrategy;
@@ -14,9 +14,9 @@ import java.util.Map;
 public class WebDriverHooks {
 
     private final UiContext context;
-    private final Configuration config;
+    private final ConfigurationLoader config;
 
-    public WebDriverHooks(UiContext context, Configuration config) {
+    public WebDriverHooks(UiContext context, ConfigurationLoader config) {
         this.context = context;
         this.config = config;
     }

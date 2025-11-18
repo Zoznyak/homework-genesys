@@ -7,24 +7,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class Configuration {
+public class ConfigurationLoader {
 
-    private static final Logger logger = LogManager.getLogger(Configuration.class);
+    private static final Logger logger = LogManager.getLogger(ConfigurationLoader.class);
+    private static final String CONFIG_FILE_NAME = "config.properties";
     private final Properties properties;
 
-    public Configuration() {
+    public ConfigurationLoader() {
         properties = new Properties();
-        String configFileName = "config.properties";
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(configFileName)) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(CONFIG_FILE_NAME)) {
             if (inputStream == null) {
-                logger.error("Configuration file not found: {}", configFileName);
-                throw new IllegalStateException("Configuration file not found: " + configFileName);
+                logger.error("Configuration file not found: {}", CONFIG_FILE_NAME);
+                throw new IllegalStateException("Required file not found: " + CONFIG_FILE_NAME);
             }
-            logger.info("Configuration file '{}' loaded successfully.", configFileName);
+            logger.info("Configuration file '{}' loaded successfully.", CONFIG_FILE_NAME);
             properties.load(inputStream);
         } catch (IOException ex) {
-            logger.error("Error loading configuration file: {}", configFileName, ex);
-            throw new IllegalStateException("Error loading configuration file: " + configFileName, ex);
+            logger.error("Error loading configuration file: {}", CONFIG_FILE_NAME, ex);
+            throw new IllegalStateException("Error loading configuration file: " + CONFIG_FILE_NAME, ex);
         }
     }
 

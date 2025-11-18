@@ -3,7 +3,7 @@ package hu.zolkasza.hw.pages.sauce;
 import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.pages.PageObject;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import org.openqa.selenium.By;
 
 public class CheckoutSummaryPage extends PageObject {
@@ -11,7 +11,7 @@ public class CheckoutSummaryPage extends PageObject {
     private final By checkoutSummaryContainer = By.cssSelector("[data-test='checkout-summary-container']");
     private final By finishButton = By.cssSelector("[data-test='finish']");
 
-    public CheckoutSummaryPage(UiContext context, Configuration config, AssertionContext assertionContext) {
+    public CheckoutSummaryPage(UiContext context, ConfigurationLoader config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
     }
 

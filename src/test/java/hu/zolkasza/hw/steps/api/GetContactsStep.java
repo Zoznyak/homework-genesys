@@ -3,7 +3,7 @@ package hu.zolkasza.hw.steps.api;
 import hu.zolkasza.hw.contexts.api.ContactsContext;
 import hu.zolkasza.hw.model.api.Contact;
 import hu.zolkasza.hw.model.api.HttpMethod;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +15,7 @@ public class GetContactsStep extends AbstractApiSteps<Object, List<Contact>> {
     private static final Logger logger = LogManager.getLogger(GetContactsStep.class);
     private final ContactsContext context;
 
-    public GetContactsStep(ContactsContext context, Configuration config) {
+    public GetContactsStep(ContactsContext context, ConfigurationLoader config) {
         super(config);
         this.context = context;
     }

@@ -4,7 +4,7 @@ import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.model.ui.sauce.SauceLabItem;
 import hu.zolkasza.hw.pages.PageObject;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import org.openqa.selenium.By;
 
 public class HeaderPanel extends PageObject {
@@ -13,7 +13,7 @@ public class HeaderPanel extends PageObject {
     private final By cartBadgeText = By.cssSelector("[data-test='shopping-cart-badge']");
     private final By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
 
-    public HeaderPanel(UiContext context, Configuration config, AssertionContext assertionContext) {
+    public HeaderPanel(UiContext context, ConfigurationLoader config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
     }
 

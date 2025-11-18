@@ -4,7 +4,7 @@ import hu.zolkasza.hw.contexts.ui.AssertionContext;
 import hu.zolkasza.hw.contexts.ui.UiContext;
 import hu.zolkasza.hw.model.ui.htmleditor.TextFormat;
 import hu.zolkasza.hw.pages.PageObject;
-import hu.zolkasza.hw.tools.Configuration;
+import hu.zolkasza.hw.tools.ConfigurationLoader;
 import org.openqa.selenium.By;
 
 public class HtmlEditorMainPage extends PageObject {
@@ -15,9 +15,9 @@ public class HtmlEditorMainPage extends PageObject {
     private final By boldButton = By.cssSelector("button[data-cke-tooltip-text*='Bold']");
     private final By underlineButton = By.cssSelector("button[data-cke-tooltip-text*='Underline']");
 
-    private final Configuration config;
+    private final ConfigurationLoader config;
 
-    public HtmlEditorMainPage(UiContext context, Configuration config, AssertionContext assertionContext) {
+    public HtmlEditorMainPage(UiContext context, ConfigurationLoader config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
         this.config = config;
     }
