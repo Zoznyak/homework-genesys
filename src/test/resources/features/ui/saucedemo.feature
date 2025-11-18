@@ -21,3 +21,5 @@ Feature: Sauce demo tests
     Given the login page is opened
     When I log in as a "standard" user
     Then products page is opened
+    And footer text contains "2024"
+    And footer text contains "Terms of Service"

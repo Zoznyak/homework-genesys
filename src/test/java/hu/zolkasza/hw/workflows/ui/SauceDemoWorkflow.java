@@ -85,8 +85,12 @@ public class SauceDemoWorkflow {
 
     @Then("products page is opened")
     public void products_page_is_opened() {
-        loginSteps.assertFooterContains("2024");
-        loginSteps.assertFooterContains("Terms of Service");
+        loginSteps.assertProductPageIsLoaded();
+    }
+
+    @Then("footer text contains {string}")
+    public void footer_text_contains(String str) {
+        loginSteps.assertFooterContains(str);
     }
 
 }

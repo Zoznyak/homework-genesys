@@ -6,13 +6,13 @@ import hu.zolkasza.hw.pages.PageObject;
 import hu.zolkasza.hw.tools.Configuration;
 import org.openqa.selenium.By;
 
-public class MainPage extends PageObject {
+public class ProductPage extends PageObject {
 
     private final By inventoryContainer = By.cssSelector("[data-test='inventory-container']");
     private final By title = By.cssSelector("[data-test='title']");
     private final By footerText = By.cssSelector("[data-test='footer-copy']");
 
-    public MainPage(UiContext context, Configuration config, AssertionContext assertionContext) {
+    public ProductPage(UiContext context, Configuration config, AssertionContext assertionContext) {
         super(context, config, assertionContext);
     }
 
