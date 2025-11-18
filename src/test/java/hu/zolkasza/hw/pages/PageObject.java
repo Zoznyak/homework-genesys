@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class PageObject {
 
@@ -25,7 +26,6 @@ public class PageObject {
     protected final AssertionContext assertionContext;
     private WebDriver driver;
     private WebDriverWait wait;
-
 
     public PageObject(UiContext context, Configuration config, AssertionContext assertionContext) {
         this.context = context;
@@ -85,9 +85,37 @@ public class PageObject {
         logger.debug("Verifying text for element: {}. Contains: '{}'", locator, expectedText);
         String actualText = getElementText(locator);
         assertionContext.get().assertThat(actualText)
-                .withFailMessage("Element text mismatch for locator '%s'. Expected: '%s', but was: '%s'",
+                .withFailMessage("Element text does not contain expected substring for locator '%s'. Expected substring: '%s', but actual text was: '%s'",
                         locator, expectedText, actualText)
                 .contains(expectedText);
+    }
+
+    protected void verifyTextIsBold(By parentLocator, String text) {
+        waitForElementVisibility(parentLocator);
+        WebElement parentElement = getDriver().findElement(parentLocator);
+        String relativeXpath = String.format("./descendant::strong[text()='%s']", text);
+        By textLocator = By.xpath(relativeXpath);
+        List<WebElement> foundElements = parentElement.findElements(textLocator);
+        logger.debug("Soft Assert: Checking element '{}' for bold text '{}'. Found {} elements.",
+                parentLocator, text, foundElements.size());
+        assertionContext.get().assertThat(foundElements.isEmpty())
+                .withFailMessage("Failure: Expected text '%s' was not found inside a <strong> tag within the element located by '%s'. The text was not bolded or missing.",
+                        text, parentLocator)
+                .isFalse();
+    }
+
+    protected void verifyTextIsUnderline(By parentLocator, String text) {
+        waitForElementVisibility(parentLocator);
+        WebElement parentElement = getDriver().findElement(parentLocator);
+        String relativeXpath = String.format("./descendant::u[text()='%s']", text);
+        By textLocator = By.xpath(relativeXpath);
+        List<WebElement> foundElements = parentElement.findElements(textLocator);
+        logger.debug("Soft Assert: Checking element '{}' for underline text '{}'. Found {} elements.",
+                parentLocator, text, foundElements.size());
+        assertionContext.get().assertThat(foundElements.isEmpty())
+                .withFailMessage("Failure: Expected text '%s' was not found inside a <u> tag within the element located by '%s'. The text was not underlined or missing.",
+                        text, parentLocator)
+                .isFalse();
     }
 
     protected void click(By locator) {
@@ -188,6 +216,18 @@ public class PageObject {
         getDriver().close();
         logger.info("Switching back to original tab: {}", originalHandle);
         getDriver().switchTo().window(originalHandle);
+    }
+
+    protected boolean hasClass(By locator, String className) {
+        waitForElementVisibility(locator);
+        WebElement element = getDriver().findElement(locator);
+        String classes = element.getAttribute("class");
+        for (String c : classes.split("\\s+")) {
+            if (c.equals(className)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private WebDriver getDriver() {

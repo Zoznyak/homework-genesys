@@ -50,6 +50,10 @@ public class Configuration {
         return getProperty("guru.ui.url");
     }
 
+    public String getHtmlEditorUiUrl() {
+        return getProperty("htmleditor.ui.url");
+    }
+
     public String getApiUrl() {
         return getProperty("jsonplaceholder.api.url");
     }
